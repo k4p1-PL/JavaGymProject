@@ -1,0 +1,26 @@
+{
+  "exportedAt": "2026-10-27T12:00:00",
+  "plans": [
+    {
+      "name": "Weekendowy",
+      "description": "Wejścia w soboty i niedziele",
+      "durationDays": 30,
+      "entryLimit": null,
+      "price": 79.00,
+      "includesClasses": false,
+      "active": true
+    }
+  ],
+  "classes": [
+    {
+      "name": "Boks fitness",
+      "description": "Trening kondycyjny z elementami boksu",
+      "trainerEmail": "trener@gym.pl",
+      "startTime": "2026-11-12T19:00",
+      "endTime": "2026-11-12T20:00",
+      "capacity": 16,
+      "room": "Sala 1",
+      "status": "SCHEDULED"
+    }
+  ]
+}

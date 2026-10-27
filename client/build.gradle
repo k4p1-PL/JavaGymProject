@@ -1,0 +1,65 @@
+plugins {
+    id 'application'
+}
+
+description = 'GymManager – klient desktopowy JavaFX'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+def javafxVersion = '21.0.5'
+def jacksonVersion = '2.17.2'
+
+// JavaFX ma osobne paczki dla każdego systemu – wybieramy tę dla bieżącego
+def osName = System.getProperty('os.name').toLowerCase()
+def osArch = System.getProperty('os.arch')
+def javafxPlatform = osName.contains('win') ? 'win'
+        : osName.contains('mac') ? (osArch == 'aarch64' ? 'mac-aarch64' : 'mac')
+        : (osArch == 'aarch64' ? 'linux-aarch64' : 'linux')
+
+dependencies {
+    ['base', 'graphics', 'controls'].each { module ->
+        implementation "org.openjfx:javafx-${module}:${javafxVersion}:${javafxPlatform}"
+    }
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+}
+
+application {
+    mainClass = 'com.example.gymclient.Launcher'
+}
+
+tasks.named('run') {
+    // adres serwera można zmienić: gradlew run -PapiUrl=http://inny-host:8080
+    systemProperty 'gym.api.url', project.findProperty('apiUrl') ?: 'http://localhost:8080'
+}
+
+// Wycisza ostrzeżenia nowszych JDK (24+) o natywnym dostępie i sun.misc.Unsafe używanym przez JavaFX.
+// Flaga --sun-misc-unsafe-memory-access istnieje dopiero od JDK 23, więc dodajemy ją tylko tam.
+tasks.withType(JavaExec).configureEach {
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
+    jvmArgumentProviders.add(new UnsafeAccessArgs(task: it))
+}
+
+class UnsafeAccessArgs implements CommandLineArgumentProvider {
+    @Internal
+    JavaExec task
+
+    @Override
+    Iterable<String> asArguments() {
+        int version
+        try {
+            version = task.javaLauncher.get().metadata.languageVersion.asInt()
+        } catch (Exception ignored) {
+            version = JavaVersion.current().majorVersion.toInteger()
+        }
+        return version >= 23 ? ['--sun-misc-unsafe-memory-access=allow'] : []
+    }
+}

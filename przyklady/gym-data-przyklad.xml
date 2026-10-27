@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gymData>
+    <exportedAt>2026-10-27T12:00:00</exportedAt>
+    <plans>
+        <plan>
+            <name>Studencki</name>
+            <description>Karnet open dla studentów (z legitymacją)</description>
+            <durationDays>30</durationDays>
+            <price>109.00</price>
+            <includesClasses>true</includesClasses>
+            <active>true</active>
+        </plan>
+        <plan>
+            <name>Wejście jednorazowe</name>
+            <description>Jedno wejście ważne przez 1 dzień</description>
+            <durationDays>1</durationDays>
+            <entryLimit>1</entryLimit>
+            <price>25.00</price>
+            <includesClasses>false</includesClasses>
+            <active>true</active>
+        </plan>
+    </plans>
+    <classes>
+        <gymClass>
+            <name>Pilates</name>
+            <description>Wzmacnianie i rozciąganie</description>
+            <trainerEmail>joga@gym.pl</trainerEmail>
+            <startTime>2026-11-10T17:00</startTime>
+            <endTime>2026-11-10T18:00</endTime>
+            <capacity>14</capacity>
+            <room>Sala 2</room>
+            <status>SCHEDULED</status>
+        </gymClass>
+    </classes>
+</gymData>

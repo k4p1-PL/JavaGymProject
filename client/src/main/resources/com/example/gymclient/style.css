@@ -1,0 +1,92 @@
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-base: #f4f5f7;
+    -fx-accent: #1f7a5a;
+    -fx-focus-color: #1f7a5a;
+}
+
+.login {
+    -fx-background-color: linear-gradient(to bottom, #e8f2ee, #f4f5f7);
+}
+
+.title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #12513b;
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #4a5a55;
+}
+
+.muted {
+    -fx-text-fill: #6b7773;
+    -fx-font-size: 11px;
+}
+
+.header {
+    -fx-background-color: #12513b;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.header-user {
+    -fx-text-fill: #d6ebe3;
+}
+
+.button {
+    -fx-background-color: #1f7a5a;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-padding: 6 14 6 14;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #186449;
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+}
+
+.button.secondary {
+    -fx-background-color: #e1e5e3;
+    -fx-text-fill: #23302c;
+}
+
+.section {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #23302c;
+    -fx-padding: 6 0 2 0;
+}
+
+.tile {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #dde3e0;
+    -fx-border-radius: 8;
+    -fx-padding: 16 20 16 20;
+    -fx-min-width: 200;
+}
+
+.tile-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #12513b;
+}
+
+.tile-label {
+    -fx-text-fill: #4a5a55;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+}
